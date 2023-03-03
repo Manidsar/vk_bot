@@ -8,6 +8,6 @@ def problem():
 
 problem_command = command_system.Command()
 
-problem_command.keys = ['соообщить о проблеме']
+problem_command.keys = ['сообщить о проблеме']
 problem_command.description = 'Ля ты крыса'
 problem_command.process = problem

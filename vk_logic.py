@@ -13,9 +13,10 @@ def send_some_msg(id, some_text, keyboard):
 
         keyboard_base = VkKeyboard(one_time=False)
 
-        # keyboard_base.add_callback_button('Сбор чеков', color=VkKeyboardColor.POSITIVE, )
-
         keyboard_base.add_button('Оплата общежития', color=VkKeyboardColor.POSITIVE)
+        keyboard_base.add_callback_button(label='Добавить красного ', color=VkKeyboardColor.PRIMARY,
+                                          payload={"type": "pay_dormitory"})
+
         keyboard_base.add_line()
 
         keyboard_base.add_button('Графики работ', color='secondary')
@@ -28,26 +29,24 @@ def send_some_msg(id, some_text, keyboard):
         keyboard_base.add_line()  # Переход на вторую строку
         keyboard_base.add_button('Отключить бота', color=VkKeyboardColor.POSITIVE)
 
+        # keyboard_base.add_callback_button(
+        #                             'Сообщить о проблеме',
+        #                              color='positive',
+        #                              payload={"type": "open_link", "link": 'https://forms.gle/ojeK7QU2aYzuUZq27'}
+        #                              )
 
-    # keyboard_base.add_callback_button(
-    #                             'Сообщить о проблеме',
-    #                              color='positive',
-    #                              payload={"type": "open_link", "link": 'https://forms.gle/ojeK7QU2aYzuUZq27'}
-    #                              )
-
-    #
-    # if msg == "начало":
-    #     send_some_msg(id, "Hi friend!", keyboard_base.get_keyboard())
-    #
-    # if msg == "сообщить о проблеме":
-    #     send_some_msg(id, 'Шо случилось??', keyboard_base.get_keyboard())
+        #
+        # if msg == "начало":
+        #     send_some_msg(id, "Hi friend!", keyboard_base.get_keyboard())
+        #
+        # if msg == "сообщить о проблеме":
+        #     send_some_msg(id, 'Шо случилось??', keyboard_base.get_keyboard())
 
         vk_session.method("messages.send", {"user_id": id, "message": some_text,
                                             "random_id": 0,
                                             "keyboard": keyboard_base.get_keyboard()})
     else:
         vk_session.method("messages.send", {"user_id": id, "message": some_text, "random_id": 0})
-
 
 # keyboard_2 = VkKeyboard(one_time=True)
 # # кнопка переключения назад, на 1ое меню.

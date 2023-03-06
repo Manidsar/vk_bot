@@ -1,2 +1,6 @@
 token = 'xxxxxxxxxxxxxxx'
 confirmation_token = 'xxxxxxxx'
+username = 'manisver'
+psw = 'KK8K_AMLuvRk4BJ'
+hostname = 'manisver.mysql.pythonanywhere-services.com'
+databasename = 'manisver$studend'

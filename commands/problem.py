@@ -1,9 +1,10 @@
 import command_system
+import time
 
-
-def problem():
+def problem(id):
     message = 'Ля ты крыса...'
-    return message
+    keyboard = False
+    return message, keyboard
 
 
 problem_command = command_system.Command()

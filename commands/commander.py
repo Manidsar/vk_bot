@@ -1,9 +1,10 @@
 import command_system
 
 
-def commander():
+def commander(id):
     message = '''Ого а тут находится текст про нашего коменданта общежития'''
-    return message
+    keyboard = False
+    return message, keyboard
 
 
 commander_command = command_system.Command()

@@ -1,13 +1,14 @@
 import command_system
 
 
-def sched():
+def sched(st):
     message = '''
               Тут вы можете видеть полное расписание всех отделов в нашей общеге
               зал
-              учебная комната и еще если что-то остается  
+              учебная комната и еще если что-то остается
               '''
-    return message
+    keyboard = False
+    return message, keyboard
 
 
 sched_command = command_system.Command()

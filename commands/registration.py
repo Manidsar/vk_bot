@@ -1,15 +1,32 @@
 import command_system
+import models
 
+def registration(st):
 
-def registration():
-    message = '''
-              Начинаем регистрацию, сюда нужно будет далее добавть кнопки какие-то 
+    keyboard = False
+# Тут мы обнулим все остальные статусы
+    print(st.name)
+    if st.name == None:
+        message = '''
+Начинаем регистрацию
+Напиши следующим сообщением свою фамилию, имя и номер комнаты
+Напирмер: Павел Пилип 418
               '''
-    return message
+        st.register = True
+    else:
+        message = '''
+Изменяем данные
+Напиши следующим сообщением свою фамилию, имя и номер комнаты
+Напирмер: Антон Кожевников 418
+              '''
+        st.register = True
+    models.db.session.add(st)
+    models.db.session.commit()
+    return message, keyboard
 
 
 registration_command = command_system.Command()
 
-registration_command.keys = ['графики работ']
-registration_command.description = 'Расскажу тебе о расписании'
+registration_command.keys = ['зарегистрироваться', 'обновить данные']
+registration_command.description = 'Кнопка с регистрацией'
 registration_command.process = registration

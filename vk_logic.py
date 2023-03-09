@@ -4,22 +4,21 @@ import settings
 import keyboards
 
 # Вся логика получения и отправки сообщений
-
+# Тут будет отправка проблем в группы и Саше
+# И отправка анекдотов
 vk_session = vk_api.VkApi(token=settings.token)
 
 
 def send_some_msg(id, some_text, keyboard):
+    print(some_text)
     if keyboard:
-        # keyboard_base.add_callback_button(
-        #                             'Сообщить о проблеме',
-        #                              color='positive',
-        #                              payload={"type": "open_link", "link": 'https://forms.gle/ojeK7QU2aYzuUZq27'}
-        #                              )
-
         vk_session.method("messages.send", {"user_id": id, "message": some_text,
                                             "random_id": 0,
-                                            "keyboard": keyboards.base()})
+                                            "keyboard": keyboard})
+                                            # "keyboard": keyboards.base(key)})
+
     else:
+
         vk_session.method("messages.send", {"user_id": id, "message": some_text, "random_id": 0})
 
 # keyboard_2 = VkKeyboard(one_time=True)

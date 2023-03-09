@@ -1,11 +1,12 @@
 import command_system
 
 
-def studsovet():
+def studsovet(st):
     message = '''
             Тут будет большой и длинный текст про студсовет, который я хочу получить
             '''
-    return message
+    keyboard = False
+    return message, keyboard
 
 
 studsovet_command = command_system.Command()

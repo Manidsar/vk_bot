@@ -1,9 +1,11 @@
 import command_system
+import time
+import keyboards
 
-
-def pay_dorm():
-    message = 'Заглушка'
-    return message
+def pay_dorm(id):
+    message = 'Переходим в раздел (хз, но мне кажется, тут нужно еще что-то написать)'
+    keyboard = keyboards.pay()
+    return message, keyboard
 
 
 pay_dorm_command = command_system.Command()

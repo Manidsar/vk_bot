@@ -3,32 +3,43 @@ import messageHandler
 import vk_logic
 from multiprocessing import Process
 import settings
-from flask_sqlalchemy import SQLAlchemy
+from exts import db
+from flask_migrate import Migrate
 
 
-app = Flask(__name__)
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username=settings.username,
-    password=settings.psw,
-    hostname=settings.hostname,
-    databasename=settings.databasename,
-)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+def register_extensions(app):
+    db.init_app(app)
 
-db = SQLAlchemy(app)
+def create_app():
+    app = Flask(__name__)
+    # app.config.from_object(config)
+    SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+        username=settings.username,
+        password=settings.psw,
+        hostname=settings.hostname,
+        databasename=settings.databasename,
+    )
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+    app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+    app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
-# Запуск потока для каждого нового обращения к боту
-# def hub():
-#     p = Process(target=main, args=(request.data,))
-#     p.start()
-#
+    register_extensions(app)
+
+    return app
+
+app = create_app()
+migrate = Migrate(app, db)
+
+@app.route("/test", methods=["POST"])
+def nnd():
+    return 'ok'
+
 @app.route("/bots", methods=["POST"])
 def main():
     data = json.loads(request.data)
@@ -37,25 +48,26 @@ def main():
         return 0
 
     if data['type'] == 'confirmation':
-        return 'token'
+        return 'f99e17cd'
     elif data['type'] == "message_allow":
+        print('Мы обрабатываем наш запрос и что-то идет не так...')
         user_id = data['object']['message']['from_id']
         message_text = 'Это кнопка Начало'
 
         vk_logic.send_some_msg(user_id, message_text)
 
-        # Сообщение о том, что обработка прошла успешно
         return 'ok'
     elif data['type'] == 'message_new':
         # p = Process(target=messageHandler.create_answer, args=(data['object']['message'],))
         messageHandler.create_answer(data['object']['message'])
 
-        # Сообщение о том, что обработка прошла успешно
+        print('Сообщение о том, что обработка прошла успешно')
         return 'ok'
     elif data['type'] == 'message_reply':
         return 'ok'
+    return 'ok'
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return 'This is login'
+    return 'This is new login'

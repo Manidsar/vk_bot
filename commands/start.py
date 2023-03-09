@@ -1,11 +1,11 @@
 import command_system
+import keyboards
 
 
-def hello():
-    message = 'Привет, друг!\nЯ новый чат-бот для общежития 14Б. \n Предлагаю тебе пройти регистрацию'
-
-
-    return message
+def hello(st):
+    message = 'Привет, друг!\nЯ новый чат-бот для общежития 14Б.'
+    keyboard = keyboards.base()
+    return message, keyboard
 
 
 hello_command = command_system.Command()

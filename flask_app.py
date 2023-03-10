@@ -1,15 +1,18 @@
 from flask import Flask, request, json
+from pip._internal.vcs import git
+
 import messageHandler
 import vk_logic
 from multiprocessing import Process
 import settings
 from exts import db
 from flask_migrate import Migrate
-
+import git
 
 
 def register_extensions(app):
     db.init_app(app)
+
 
 def create_app():
     app = Flask(__name__)
@@ -28,17 +31,30 @@ def create_app():
     app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-
     register_extensions(app)
 
     return app
 
+
 app = create_app()
 migrate = Migrate(app, db)
+
 
 @app.route("/test", methods=["POST"])
 def nnd():
     return 'ok'
+
+
+@app.route('/update_server', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('path/to/git_repo')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
+
 
 @app.route("/bots", methods=["POST"])
 def main():

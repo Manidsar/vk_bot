@@ -5,7 +5,7 @@ class Student(db.Model):
     name = db.Column(db.String(100))
     surname = db.Column(db.String(100))
     room = db.Column(db.Integer)
-    dept = db.Column(db.Integer)
+    debt = db.Column(db.Integer)
     admin = db.Column(db.Boolean(create_constraint=False))
     register = db.Column(db.Boolean(create_constraint=False))
     clown = db.Column(db.Boolean(create_constraint=False))

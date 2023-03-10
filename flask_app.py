@@ -7,7 +7,6 @@ from multiprocessing import Process
 import settings
 from exts import db
 from flask_migrate import Migrate
-import git
 
 
 def register_extensions(app):
@@ -48,8 +47,10 @@ def nnd():
 @app.route('/update_server', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('path/to/git_repo')
+        repo = git.Repo('/home/maniswear/mysite')
         origin = repo.remotes.origin
+        repo.create_head('master',
+        origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
     else:

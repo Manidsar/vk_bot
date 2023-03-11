@@ -1,5 +1,5 @@
 from flask import Flask, request, json
-from pip._internal.vcs import git
+# from pip._internal.vcs import git
 
 import messageHandler
 import vk_logic
@@ -7,6 +7,7 @@ from multiprocessing import Process
 import settings
 from exts import db
 from flask_migrate import Migrate
+import git
 
 
 def register_extensions(app):

@@ -12,7 +12,7 @@ class Student(db.Model):
     problem = db.Column(db.Boolean(create_constraint=False))
     give_check = db.Column(db.Boolean(create_constraint=False))
     status = db.Column(db.Boolean(create_constraint=False))
-    # count = db.Column(db.Integer)
+    count = db.Column(db.Integer)
 
     def __repr__(self):
         # данные, которые выдает модель при обращении к объекту

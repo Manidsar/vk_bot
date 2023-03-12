@@ -1,36 +1,37 @@
 
-from exts import db
+from replit import db
 
-class Student(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    surname = db.Column(db.String(100))
-    room = db.Column(db.Integer)
-    debt = db.Column(db.Integer)
-    admin = db.Column(db.Boolean(create_constraint=False))
-    register = db.Column(db.Boolean(create_constraint=False))
-    clown = db.Column(db.Boolean(create_constraint=False))
-    problem = db.Column(db.Boolean(create_constraint=False))
-    give_check = db.Column(db.Boolean(create_constraint=False))
-    status = db.Column(db.Boolean(create_constraint=False))
-    count = db.Column(db.Integer)
+# Тут будем объявлять нужные данные, чтобы названия столбцов были четкие.
+# class Student(db):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(100))
+#     surname = db.Column(db.String(100))
+#     room = db.Column(db.Integer)
+#     debt = db.Column(db.Integer)
+#     admin = db.Column(db.Boolean(create_constraint=False))
+#     register = db.Column(db.Boolean(create_constraint=False))
+#     clown = db.Column(db.Boolean(create_constraint=False))
+#     problem = db.Column(db.Boolean(create_constraint=False))
+#     give_check = db.Column(db.Boolean(create_constraint=False))
+#     status = db.Column(db.Boolean(create_constraint=False))
+#     count = db.Column(db.Integer)
 
-    def __repr__(self):
-        # данные, которые выдает модель при обращении к объекту
-        # return {
-        #         'id': self.id,
-        #         'name': self.name,
-        #         'surname': self.surname,
-        #         'room': self.room,
-        #         'dept': self.dept,
-        #         'admin': self.admin,
-        #         'register': self.register,
-        #         'clown': self.clown,
-        #         'problem': self.problem,
-        #         'give_check': self.give_check,
-        #         'status': self.status,
-        #         }
-        return f'<Student {self.name}>'
+    # def __repr__(self):
+    #     # данные, которые выдает модель при обращении к объекту
+    #     # return {
+    #     #         'id': self.id,
+    #     #         'name': self.name,
+    #     #         'surname': self.surname,
+    #     #         'room': self.room,
+    #     #         'dept': self.dept,
+    #     #         'admin': self.admin,
+    #     #         'register': self.register,
+    #     #         'clown': self.clown,
+    #     #         'problem': self.problem,
+    #     #         'give_check': self.give_check,
+    #     #         'status': self.status,
+    #     #         }
+    #     return f'<Student {self.name}>'
 
 
 def get_status(id_s):
@@ -46,6 +47,12 @@ def get_status(id_s):
 
     # Функция, которая изменяет имя и фамилию или меняет их принимает id и сообщение, которое нужно обработать.
     # Возвращает соообщение об успешной регистрации или ошибке
+
+def start_register(id):
+  db[id] = {
+    'name': False
+  }
+  
 def registration(id, message):
     base = get_status(id)
     try:

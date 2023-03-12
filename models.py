@@ -1,3 +1,4 @@
+
 from exts import db
 
 class Student(db.Model):

@@ -10,8 +10,8 @@ Flask = "^2.2.3"
 Flask-Migrate = "^4.0.4"
 Flask-SQLAlchemy = "^3.0.3"
 GitPython = "^3.1.31"
-vk-api = "^11.9.9"
 replit = "^3.2.5"
+vk-api = "11.9.9"
 
 [tool.poetry.dev-dependencies]
 

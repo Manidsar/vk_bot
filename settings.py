@@ -1,4 +1,4 @@
-token = 'vk1.a.ob84_Ldo9valpO6jRKZM_weUD3qVBrlrYbtqCGGGyTQlcO1T-t1VC-G1vexl5BmZ4s3rO3tq-uPgirY7Kc_sq4dfnDrL_nd1VgfQoxHZm9O8AOoo-HBpAWeVYQ0haVFaMEZHA8b6GJ5K-0XO3vA_9ZsFT-Vy7K1oLrxIMdGY6vr2jXvuYUA3zvLR3R48Mpb8T77uJ2uXOMO6-PR7tRQwZA'
+token = 'vk1.a.0p7AfGU1rLe6DWQabUEsFmSUNOVoz-onQqEhJD21w5HZN_cEWWTiywA90BVCU7pG7HQjQKfzGsP2gltoY2wMOikszohoLsyRBGnzg1H65Zq5xdQSgJXA42z1aOnPP4KqqBKUOAZphdvUeW4iBqaBACtyuQ7IhlKBaQfGO4YSfwiWKmXWQaevqENK1amZdvjfpve9abZTi3IsvChshvHaQw'
 confirmation_token = 'xxxxxxxxxxxx'
 username = ''
 psw = 'KK8K_AMLuvRk4BJ'

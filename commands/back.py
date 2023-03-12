@@ -1,13 +1,14 @@
 import command_system
 import keyboards
 
+
 def back(st):
-    message = 'Возвращаюсь в главное меню'
-    if st.name == None:
-        keyboard = keyboards.base()
-    else:
-        keyboard = keyboards.base_reg()
-    return message, keyboard
+  message = 'Возвращаюсь в главное меню'
+  if st['name']:
+    keyboard = keyboards.base()
+  else:
+    keyboard = keyboards.base_reg()
+  return message, keyboard
 
 
 back_command = command_system.Command()

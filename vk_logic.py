@@ -18,7 +18,7 @@ def send_some_msg(id, some_text, keyboard):
 
     else:
 
-        vk_session.method("messages.send", {"user_id": id, "message": some_text, "random_id": 0})
+        vk_session.method("messages.send", {"user_id": id, "message": some_text, "random_id": random.randrange(1, 1000000)})
 
 # keyboard_2 = VkKeyboard(one_time=True)
 # # кнопка переключения назад, на 1ое меню.
